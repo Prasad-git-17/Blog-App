@@ -14,7 +14,8 @@ app.use(cookieParser())
 const port = process.env.PORT
 app.use(express.json())
 app.use(cors({
-    origin:'https://blog-app-eta-tan.vercel.app',
+    //https://blog-app-eta-tan.vercel.app/
+    origin:'https://blog-app-eta-tan.vercel.app/',
     credentials:true,
     methods:['POST','GET','PUT','DELETE']
 

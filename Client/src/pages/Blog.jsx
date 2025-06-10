@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import React  from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+const apiUrl=import.meta.env.VITE_API_URL
 const Blog = () => {
  
    const navigate=useNavigate()
@@ -11,7 +12,7 @@ const Blog = () => {
   
       const fetchAllBlogs= async()=>{
         try {
-          const blogData=await axios.get("http://localhost:5000/blog/totalPost")
+          const blogData=await axios.get(`${apiUrl}/blog/totalPost`)
      
           setBlogs(blogData.data.totalBlogPost)   
         } catch (error) {

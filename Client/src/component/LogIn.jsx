@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+const apiUrl=import.meta.env.VITE_API_URL
 const LogIn = () => {
     const navigate=useNavigate()
     const [email, setEmail] = useState('')
@@ -20,7 +21,7 @@ const LogIn = () => {
      }
 
      try {
-        const res=await axios.post('http://localhost:5000/user/login',
+        const res=await axios.post(`${apiUrl}/user/login`,
        logInData)
          localStorage.setItem("token",res.data.token)
          localStorage.setItem("userId",res.data.user._id)

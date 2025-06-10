@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Peace from '../assets/Peace.jpg'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+const apiUrl=import.meta.env.VITE_API_URL
 const Home = () => {
  
  const navigate=useNavigate()
@@ -11,8 +12,8 @@ const Home = () => {
 
     const fetchAllBlogs= async()=>{
       try {
-      //  const blogData=await axios.get("http://localhost:5000/blog/totalPost")
-         const blogData=await axios.get("https://blog-app-eta-tan.vercel.app/blog/totalPost")
+      
+         const blogData=await axios.get(`${apiUrl}/blog/totalPost`)
        // console.log(blogData.data);
         
    

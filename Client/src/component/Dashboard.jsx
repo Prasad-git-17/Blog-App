@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+const apiUrl=import.meta.env.VITE_API_URL
 
 const Dashboard = () => {
   const {id}=useParams()
@@ -15,7 +16,7 @@ const Dashboard = () => {
   useEffect(() => {
     const userBlogPosts = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/blog/findPost/${userId}`,{
+        const res = await axios.get(`${apiUrl}/blog/findPost/${userId}`,{
 
           headers :{
             Auth: token
@@ -44,7 +45,7 @@ const Dashboard = () => {
   }, [])
 const handleDelete =async(id)=>{
   try {
-    const deletePost=await axios.delete(`http://localhost:5000/blog/deletePost/${id}`,
+    const deletePost=await axios.delete(`${apiUrl}/blog/deletePost/${id}`,
    )
    // console.log('blog post deleted succsefully');
     let updateReal = Blog.filter(data => data._id !== id)
@@ -54,23 +55,23 @@ const handleDelete =async(id)=>{
   } catch (error) {
      console.log('error happns to get user blog', error);
   }
+}
 
 
-
-const handleDelete =async(id)=>{
-  try {
-    const deletePost=await axios.delete(`http://localhost:5000/blog/deletePost/${id}`)
-    //console.log('blog post deleted succsefully');
-    let updateReal = Blog.filter(data => data._id !== id)
-        setBlog(updateReal)
+// const handleDelete =async(id)=>{
+//   try {
+//     const deletePost=await axios.delete(`http://localhost:5000/blog/deletePost/${id}`)
+//     //console.log('blog post deleted succsefully');
+//     let updateReal = Blog.filter(data => data._id !== id)
+//         setBlog(updateReal)
 
     
-  } catch (error) {
-     console.log('error happns to get user blog', error);
-  }
+//   } catch (error) {
+//      console.log('error happns to get user blog', error);
+//   }
 
-}
-}
+// }
+
  
 
   return (

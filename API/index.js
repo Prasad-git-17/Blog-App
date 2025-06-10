@@ -12,7 +12,7 @@ dotenv.config();
 const app = express()
 app.use(cookieParser())
 const port = process.env.PORT
-const allowedURL=process.env.FORONTEND_UR
+const allowedURL=process.env.FORONTEND_URL
 app.use(express.json())
 app.use(cors({
    

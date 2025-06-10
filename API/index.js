@@ -12,10 +12,11 @@ dotenv.config();
 const app = express()
 app.use(cookieParser())
 const port = process.env.PORT
+const allowedURL=process.env.FORONTEND_UR
 app.use(express.json())
 app.use(cors({
-    //https://blog-app-eta-tan.vercel.app/
-    origin:'https://blog-app-eta-tan.vercel.app',
+   
+    origin:allowedURL,
     credentials:true,
     methods:['POST','GET','PUT','DELETE']
 

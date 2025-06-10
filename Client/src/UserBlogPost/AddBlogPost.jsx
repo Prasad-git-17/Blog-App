@@ -1,7 +1,7 @@
 import React, {  useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
-
+const apiUrl=import.meta.env.VITE_API_URL
 
 const AddBlogPost = () => {
   const navigate = useNavigate()
@@ -28,7 +28,7 @@ const AddBlogPost = () => {
 
 
     try {
-      const res = await axios.post(`http://localhost:5000/blog/addPost`, BlogPostData,
+      const res = await axios.post(`${apiUrl}/blog/addPost`, BlogPostData,
 
         {
           headers: {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+const apiUrl=import.meta.env.VITE_API_URL
 const ViewBlogPost = () => {
     const { id } = useParams()
     const navigate = useNavigate()
@@ -9,7 +10,7 @@ const ViewBlogPost = () => {
 
     useEffect(() => {
         const viewBlogById = async () => {
-            const res = await axios.get(`http://localhost:5000/blog/viewBlog/${id}`)
+            const res = await axios.get(`${apiUrl}/blog/viewBlog/${id}`)
           //  console.log(res.data.blogPostById);
             setBlogPost(res.data.blogPostById)
             setUser(res.data.blogPostById.user.userName) 

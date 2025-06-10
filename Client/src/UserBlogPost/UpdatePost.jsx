@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios'
+const apiUrl=import.meta.env.VITE_API_URL
 const UpdatePost = () => {
   let userId = localStorage.getItem('userId')
   const navigate = useNavigate()
@@ -14,7 +15,7 @@ const UpdatePost = () => {
   
   useEffect(() => {
     const viewBlogById = async () => {
-      const res = await axios.get(`http://localhost:5000/blog/viewBlog/${id}`)
+      const res = await axios.get(`${apiUrl}/blog/viewBlog/${id}`)
       // console.log(res.data.blogPostById);
       // console.log(res.data.blogPostById.catogery);
       setTitle(res.data.blogPostById.title)
@@ -41,7 +42,7 @@ const UpdatePost = () => {
     }
 
     try {
-      const res = await axios.put(`http://localhost:5000/blog/update/${id}`, updatedPost,
+      const res = await axios.put(`${apiUrl}/blog/update/${id}`, updatedPost,
         {
           headers: {
             Auth: token

@@ -11,7 +11,8 @@ const Home = () => {
 
     const fetchAllBlogs= async()=>{
       try {
-        const blogData=await axios.get("http://localhost:5000/blog/totalPost")
+      //  const blogData=await axios.get("http://localhost:5000/blog/totalPost")
+         const blogData=await axios.get("https://blog-app-eta-tan.vercel.app/blog/totalPost")
        // console.log(blogData.data);
         
    

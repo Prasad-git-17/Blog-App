@@ -16,7 +16,7 @@ const allowedURL=process.env.FORONTEND_URL
 app.use(express.json())
 app.use(cors({
    
-    origin:'https://blog-app-ten-ashy.vercel.app',
+    origin:allowedURL,
     credentials:true,
     methods:['POST','GET','PUT','DELETE']
 

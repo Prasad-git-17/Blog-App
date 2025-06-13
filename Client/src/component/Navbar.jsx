@@ -18,7 +18,7 @@ const Navbar = () => {
 
 
     return (
-        <div>
+        <div className='sticky top-0 z-10'>
             <div className='flex justify-between items-center h-10 bg-white shadow-md'>
                 <div className='ml-4 text-xl cursor-pointer'>
                     My <span className='font-extrabold'>Blog</span>

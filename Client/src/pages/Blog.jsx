@@ -7,6 +7,11 @@ const Blog = () => {
  
    const navigate=useNavigate()
    const [Blogs,setBlogs]=useState([])
+   const [pageNo, setPageNo] = useState(1)
+  const itemPerPage = 4
+  const totalPages = Math.ceil(Blogs.length / itemPerPage)
+  const initialIndex = pageNo * itemPerPage - itemPerPage
+  const lastIndex = pageNo* itemPerPage
   
     useEffect(()=>{
   
@@ -25,7 +30,18 @@ const Blog = () => {
   
     },[])
   
-    
+    const handlePage = (a) => {
+     setPageNo(a)
+
+  }
+
+const handleNext =()=>{
+  setPageNo(pageNo+1)
+}
+
+const handlePrevious = ()=>{
+  setPageNo(pageNo-1)
+}
   
   return (
     <div className=''>
@@ -34,7 +50,7 @@ const Blog = () => {
       </div>
     <div className='grid md:grid-cols-2 m-4 gap-4 lg:grid-cols-3 '>
           
-           {Blogs.slice().reverse().map((post,index)=>{
+           {Blogs.slice(initialIndex, lastIndex).map((post,index)=>{
             return <div 
             key={index}
             
@@ -57,6 +73,25 @@ const Blog = () => {
            }
            
           </div>
+           <div className='flex justify-center mt-12 m-4'>
+        <button className={`${pageNo==1 ?  'hidden' : 'block'} pl-2 pr-2 m-1 border font-semibold  rounded`}
+        onClick={()=>{handlePrevious()}}
+        >Previous</button>
+        {
+          Array.from({ length: totalPages }, (_, index) => {
+            return <button
+              className={`${pageNo === index + 1 ? 'bg-orange-400' : ''} m-1 pl-2 pr-2 font-semibold border rounded`}
+              key={index}
+             
+              onClick={()=>{handlePage(index + 1)}}
+            >{index+1}</button>
+          })
+
+        }
+        <button 
+        onClick={()=>{handleNext()}}
+        className={`${pageNo==totalPages ? 'hidden' : 'block'} pl-2 pr-2 m-1  font-semibold border rounded`}>Next</button>
+      </div>
     </div>
   )
 }

@@ -48,7 +48,7 @@ const handlePrevious = ()=>{
       <div>
         <h1 className='font-bold text-2xl text-center mt-4'>All <span className=' text-orange-600 text-2xl'>Blog</span> Posts</h1>
       </div>
-    <div className='grid md:grid-cols-2 m-4 gap-4 lg:grid-cols-3 '>
+    <div className='grid md:grid-cols-2 m-4 gap-4 lg:grid-cols-2 '>
           
            {Blogs.slice(initialIndex, lastIndex).map((post,index)=>{
             return <div 
